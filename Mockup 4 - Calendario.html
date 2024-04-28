@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Primera Vista</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<link rel="mask-icon" href="logo-pin.svg" color="#111">
+		<link href="css/Nunito.css" rel="stylesheet">
+		<link href="css/Montserrat.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/awesome.min.css">
+		<link rel="stylesheet" href="css/datepicker.css">
+		<link rel="stylesheet" href="css/FullCalendar.css"/>
+		<style>
+			body {
+				background-color: #f8f9fa;
+			}
+			.navbar {
+				background-color: #007bff;
+			}
+			.footer {
+				background-color: #343a40;
+				color: #ffffff;
+				text-align: center;
+				padding: 20px 0;
+			}
+			.main-box {
+				background-color: #d9d9d9;
+				height: auto;
+			}
+			.left-links {
+				padding-top: 20px;
+				background-color: #f1f1f1;
+				max-height: calc(100vh - 300px); 
+				overflow-y: auto; 
+			}
+			.left-links a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #333;
+			}
+			.left-links a:hover {
+				background-color: #ddd;
+			}
+			.carousel-inner img {
+				width: 100%;
+				object-fit: cover;
+			}
+		</style>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/moment.js"></script>
+		<script src="js/fullcalendar.min.js"></script>
+		<script src="js/datepicker.js"></script>
+		<script src="js/datepicker.en.js"></script>
+		<script src="js/pen.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container justify-content-center">
+				<a class="navbar-brand" href="#">Centro Médico Galenos</a>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+
+				<!-- menu lateral -->
+				<div class="col-10 col-md-2 mt-4">
+					<div class="left-links">
+						<a href="#">Pedir hora</a>
+						<a href="#">Cancelar hora</a>
+						<a href="#" class="text-light bg-secondary">Inicio</a>
+						<a href="#">Login</a>
+					</div>
+					col-10 col-md-2
+					<div class="left-box"></div>
+				</div>
+
+				<!-- contenido -->
+				<div class="col-10 mt-4">
+					<div class="col-10 mt-4">
+						<label>Seleccione un Médico</label>
+						<select class="form-control" name="ename2">
+							<option value="Global">Global</option>
+							<option value="Medico_1">Medico 1</option>
+							<option value="Medico_2">Medico 2</option>
+							<option value="Medico_3">Medico 3</option>
+							<option value="Medico_4">Medico 4</option>
+						</select>
+					</div>
+					<div class="p-5">
+						<h2 class="mb-4">Full Calendar</h2>
+						<div class="card">
+							<div class="card-body p-0">
+								<div id="calendar"></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- calendar modal -->
+					<div id="modal-view-event" class="modal modal-top fade calendar-modal">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-body">
+									<h4 class="modal-title">
+										<span class="event-icon"></span>
+										<span class="event-title"></span>
+									</h4>
+									<div class="event-body"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<form id="add-event">
+									<div class="modal-body">
+										<h4>Add Event Detail</h4>        
+										<div class="form-group">
+											<label>Médico</label>
+											<select class="form-control" name="ename">
+												<option value="Global">Global</option>
+												<option value="Medico_1">Medico 1</option>
+												<option value="Medico_2">Medico 2</option>
+												<option value="Medico_3">Medico 3</option>
+												<option value="Medico_4">Medico 4</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>Fecha</label>
+											<input type='text' class="datetimepicker form-control" name="edate"/>
+										</div>        
+										<div class="form-group">
+											<label>Description</label>
+											<textarea class="form-control" name="edesc"></textarea>
+										</div>
+										<div class="form-group">
+											<label>Color</label>
+											<select class="form-control" name="ecolor">
+												<option value="fc-bg-default">fc-bg-default</option>
+												<option value="fc-bg-blue">fc-bg-blue</option>
+												<option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
+												<option value="fc-bg-pinkred">fc-bg-pinkred</option>
+												<option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>Event Icon</label>
+											<select class="form-control" name="eicon">
+												<option value="circle">circle</option>
+												<option value="cog">cog</option>
+												<option value="group">group</option>
+												<option value="suitcase">suitcase</option>
+												<option value="calendar">calendar</option>
+											</select>
+										</div>        
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-primary" >Save</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>        
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer class="footer mt-4">
+			<div class="container">
+				<span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+			</div>
+		</footer>
+	</body>
+</html>
