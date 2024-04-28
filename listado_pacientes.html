@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Segunda Vista</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<style>
+
+			body {
+			background-color: #f8f9fa; 
+			}
+			.navbar {
+			background-color: #007bff; 
+			}
+			.footer {
+			background-color: #343a40; 
+			color: #ffffff; 
+			text-align: center; 
+			padding: 20px 0; 
+			}
+			.left-box {
+			background-color: #ffffff; 
+			height: auto; 
+			margin-bottom: 10px;
+			}
+			.right-box {
+			background-color: #ffffff; 
+			height: auto; 
+			}
+			.left-links {
+			padding-top: 20px;
+			background-color: #f1f1f1;
+			max-height: calc(100vh - 300px); 
+			overflow-y: auto; 
+			}
+			.left-links a {
+			display: block;
+			padding: 10px;
+			text-decoration: none;
+			color: #333;
+			}
+			.left-links a:hover {
+			background-color: #ddd;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container justify-content-center">
+				<a class="navbar-brand" href="#">Centro Médico Galenos</a>
+			</div>
+		</nav>
+
+		<div class="container-fluid mt-4">
+			<div class="row justify-content-center">
+
+				<div class="col-10 col-md-2">
+
+					<div class="left-links">
+						<a href="#">Consultar paciente en espera</a>
+						<a href="#">Marcar paciente como atendido</a>
+						<a href="#" class="text-light bg-secondary" >Listado de pacientes</a>
+						<a href="#">Logout</a>
+					</div>
+
+					col-10 col-md-2
+					<div class="left-box"></div>
+				</div>
+
+				<div class="col-10">
+					<div class="jumbotron">
+						<h2>Pacientes médico: Nombre médico - Col 10</h2>
+						<br>
+						<div class="row">
+							<div class="col-md-4 col-lg-3">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h5 class="card-title">Paciente 1</h5>
+										<p class="card-text">Información sobre el paciente 1. <br>col-md-4 col-lg-3</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-lg-3">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h5 class="card-title">Paciente 2</h5>
+										<p class="card-text">Información sobre el paciente 2.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-lg-3">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h5 class="card-title">Paciente 3</h5>
+										<p class="card-text">Información sobre el paciente 3.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 col-lg-3">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h5 class="card-title">Paciente 4</h5>
+										<p class="card-text">Información sobre el paciente 4.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 col-lg-3">
+								<div class="card mb-4">
+									<div class="card-body">
+										<h5 class="card-title">Paciente 5</h5>
+										<p class="card-text">Información sobre el paciente 5.</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+			</div>
+		</footer>
+
+	</body>
+</html>

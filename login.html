@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Iniciar Sesión</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<style>
+			/* Estilos personalizados */
+			body {
+			background-color: #f8f9fa; /* Color de fondo */
+			}
+			.navbar {
+			background-color: #007bff; /* Color de fondo de la barra de navegación */
+			}
+			.footer {
+			background-color: #343a40; /* Color de fondo del footer */
+			color: #ffffff; /* Color del texto del footer */
+			text-align: center; /* Centrar el texto en el footer */
+			padding: 20px 0; /* Espaciado interno en el footer */
+			}
+			.login-container {
+			text-align: center; /* Centrar elementos */
+			}
+			.register-link {
+			margin-top: 20px; /* Espacio superior */
+			}
+			.left-links {
+			padding-top: 20px;
+			background-color: #f1f1f1;
+			max-height: calc(100vh - 300px); 
+			overflow-y: auto; 
+			}
+			.left-links a {
+			display: block;
+			padding: 10px;
+			text-decoration: none;
+			color: #333;
+			}
+			.left-links a:hover {
+			background-color: #ddd;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container justify-content-center"> <!-- Agregado justify-content-center para centrar -->
+				<a class="navbar-brand" href="#">Centro Médico Galenos</a>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center">
+
+				<!-- menu lateral -->
+				<div class="col-10 col-md-2 mt-4">
+
+					<div class="left-links">
+						<a href="#">Pedir hora</a>
+						<a href="#">Cancelar hora</a>
+						<a href="#">Inicio</a>
+						<a href="#" class="text-light bg-secondary">Login</a>
+					</div>
+
+					col-10 col-md-2
+					<div class="left-box"></div>
+				</div>
+
+				<!-- Contenedor del formulario de inicio de sesión -->
+				<div class="container login-container col-10 mt-4">
+					<h2>Inicio de Sesión - Col 10</h2>
+					<div class="row justify-content-center">
+						<!-- Botón para seleccionar si se es paciente o funcionario -->
+						<div class="col-sx-10 col-sm-6 mt-4">
+							<button type="button" class="btn btn-primary btn-block">Soy Paciente</button>
+						</div>
+						<div class="col-sx-10 col-sm-6 mt-4">
+							<button type="button" class="btn btn-primary btn-block">Soy Funcionario</button>
+						</div>
+					</div>
+					<!-- Formulario de inicio de sesión -->
+					<form>
+						<div class="form-group mt-4">
+							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+						</div>
+						<div class="container col-sx-10 col-sm-6">
+							<button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+						</div>
+					</form>
+					<!-- Mensaje para registrarse -->
+					<div class="register-link mt-3">
+						<span>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer mt-5">
+			<div class="container">
+				<span>Derechos de autor © 2024 Centro Médico Galenos</span>
+			</div>
+		</footer>
+
+	</body>
+</html>
