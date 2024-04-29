@@ -12,43 +12,7 @@
 		<link rel="stylesheet" href="css/awesome.min.css">
 		<link rel="stylesheet" href="css/datepicker.css">
 		<link rel="stylesheet" href="css/FullCalendar.css"/>
-		<style>
-			body {
-				background-color: #f8f9fa;
-			}
-			.navbar {
-				background-color: #007bff;
-			}
-			.footer {
-				background-color: #343a40;
-				color: #ffffff;
-				text-align: center;
-				padding: 20px 0;
-			}
-			.main-box {
-				background-color: #d9d9d9;
-				height: auto;
-			}
-			.left-links {
-				padding-top: 20px;
-				background-color: #f1f1f1;
-				max-height: calc(100vh - 300px); 
-				overflow-y: auto; 
-			}
-			.left-links a {
-				display: block;
-				padding: 10px;
-				text-decoration: none;
-				color: #333;
-			}
-			.left-links a:hover {
-				background-color: #ddd;
-			}
-			.carousel-inner img {
-				width: 100%;
-				object-fit: cover;
-			}
-		</style>
+		<link rel="stylesheet" href="css/custom.css"/> <!-- CUSTOM CSS -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -66,7 +30,7 @@
 			</div>
 		</nav>
 
-		<div class="container-fluid">
+		<div class="main-box container-fluid">
 			<div class="row justify-content-center">
 
 				<!-- menu lateral -->
@@ -74,10 +38,12 @@
 					<div class="left-links">
 						<a href="#">Pedir hora</a>
 						<a href="#">Cancelar hora</a>
-						<a href="#" class="text-light bg-secondary">Inicio</a>
-						<a href="#">Login</a>
+						<a href="calendario.html" class="text-light bg-secondary">Calendario médicos</a>
+						<a href="informe-recaudacion.html">Informe recaudación</a>
+						<a href="historial-facturas.html">Emisión y registro de comisiones</a>
 					</div>
-					col-10 col-md-2
+					<div class="dropdown-divider"></div>
+					Usuario: Secretaria
 					<div class="left-box"></div>
 				</div>
 
