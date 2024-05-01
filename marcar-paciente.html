@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcar Paciente como Atendido</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container justify-content-center">
+        <a class="navbar-brand" href="#">Centro Médico Galenos</a>
+    </div>
+</nav>
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+
+        <!-- Barra lateral -->
+        <div class="col-2 col-md-2">
+            <div class="left-links">
+                <a href="consultar-paciente.html">Consultar paciente en espera</a>
+                <a href="marcar-paciente.html" class="text-light bg-secondary">Marcar paciente como atendido</a>
+                <a href="listado-pacientes.html">Listado de pacientes</a>
+                <a href="#">Logout</a>
+            </div>
+            <div class="left-box"></div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="col-10">
+            <div class="jumbotron">
+                <h2>Marcar Paciente como Atendido</h2>
+                <br>
+                <div id="filters" class="mb-3">
+                    <label for="filterDate">Filtrar por Fecha:</label>
+                    <input type="date" id="filterDate">
+                    <label for="filterDoctor">Filtrar por Doctor:</label>
+                    <select id="filterDoctor">
+                        <option value="doctor1">Doctor 1</option>
+                        <option value="doctor2">Doctor 2</option>
+                        <option value="doctor3">Doctor 3</option>
+                    </select>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>RUT</th>
+                            <th>Hora de Consulta</th>
+                            <th>Doctor</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Paciente 1</td>
+                            <td>12345678-9</td>
+                            <td>10:00</td>
+                            <td>Doctor 1</td>
+                            <td>En espera</td>
+                            <td><button class="btn btn-primary">Marcar como atendido</button></td>
+                        </tr>
+                        <tr>
+                            <td>Paciente 2</td>
+                            <td>98765432-1</td>
+                            <td>11:00</td>
+                            <td>Doctor 2</td>
+                            <td>En espera</td>
+                            <td><button class="btn btn-primary">Marcar como atendido</button></td>
+                        </tr>
+                        <!-- More rows can be added here as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Script JavaScript -->
+<script src="js/marcar-paciente.js"></script>
+
+</body>
+</html>

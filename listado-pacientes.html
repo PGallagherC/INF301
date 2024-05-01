@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Pacientes</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container justify-content-center">
+        <a class="navbar-brand" href="#">Centro Médico Galenos</a>
+    </div>
+</nav>
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+
+        <!-- Barra lateral -->
+        <div class="col-2 col-md-2">
+            <div class="left-links">
+                <a href="consultar-paciente.html">Consultar paciente en espera</a>
+                <a href="marcar-paciente.html">Marcar paciente como atendido</a>
+                <a href="listado-pacientes.html" class="text-light bg-secondary">Listado de pacientes</a>
+                <a href="#">Logout</a>
+            </div>
+            <div class="left-box"></div>
+        </div>
+
+
+        <div class="col-10">
+            <div class="jumbotron">
+                <h2>Pacientes médico: Nombre médico</h2>
+                <br>
+                <div class="row">
+                    <!-- Tarjetas de pacientes aquí -->
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Paciente 1</h5>
+                                <p class="card-text">Información sobre el paciente 1. <br><span class="sr-only">col-md-4 col-lg-3</span></p>
+                                <button class="btn btn-primary" onclick="showDetails('paciente1')">Ver detalles</button>
+                                <!-- Contenedor oculto para detalles -->
+                                <div id="paciente1Details" class="details-container">
+                                    <p>Hora de consulta: XX:XX</p>
+                                    <p>Día de consulta: XX/XX/XXXX</p>
+                                    <p>Consulta pagada: Sí/No</p>
+                                    <button class="btn btn-secondary" onclick="hideDetails('paciente1')">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repite este bloque para cada paciente -->
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Paciente 2</h5>
+                                <p class="card-text">Información sobre el paciente 2.</p>
+                                <button class="btn btn-primary" onclick="showDetails('paciente2')">Ver detalles</button>
+                                <!-- Contenedor oculto para detalles -->
+                                <div id="paciente2Details" class="details-container">
+                                    <p>Hora de consulta: XX:XX</p>
+                                    <p>Día de consulta: XX/XX/XXXX</p>
+                                    <p>Consulta pagada: Sí/No</p>
+                                    <button class="btn btn-secondary" onclick="hideDetails('paciente2')">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Puedes seguir agregando más pacientes aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+    </div>
+</footer>
+
+<!-- Script JavaScript -->
+<script src="js/appointment.js"></script>
+
+</body>
+</html>
