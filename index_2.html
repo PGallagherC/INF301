@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primera Vista</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados */
+    body {
+      background-color: #f8f9fa; /* Color de fondo */
+      margin-bottom: 100px; /* Agregar espacio en la parte inferior para el footer */
+    }
+    .navbar {
+      background-color: #007bff; /* Color de fondo de la barra de navegación */
+    }
+    .footer {
+      background-color: #343a40; /* Color de fondo del footer */
+      color: #ffffff; /* Color del texto del footer */
+      text-align: center; /* Centrar el texto en el footer */
+      padding: 20px 0; /* Espaciado interno en el footer */
+      position: fixed; /* Fijar el footer en la parte inferior */
+      width: 100%; /* Ancho del footer al 100% */
+      bottom: 0; /* Alinear el footer en la parte inferior */
+    }
+    .left-box {
+      background-color: #ffffff; /* Color de fondo del rectángulo izquierdo */
+      height: 200px; /* Altura del rectángulo izquierdo */
+      background-size: cover; /* Ajustar tamaño de la imagen */
+    }
+    .right-box {
+      background-image: url('https://www.igaleno.com/wp-content/uploads/2021/07/Diferencias-entre-centro-medico-y-clinica.jpg'); /* Imagen de fondo predeterminada */
+      background-size: cover; /* Ajustar tamaño de la imagen */
+      height: 200px; /* Altura del rectángulo derecho */
+      position: relative; /* Posicionamiento relativo para botones */
+    }
+    .button-container {
+      position: absolute; /* Posicionamiento absoluto */
+      top: 50%; /* Alinear en la mitad superior */
+      left: 50%; /* Alinear en la mitad izquierda */
+      transform: translate(-50%, -50%); /* Centrar */
+      display: flex; /* Usar flexbox */
+      flex-direction: column; /* Alinear botones en columna */
+      align-items: center; /* Centrar horizontalmente */
+    }
+    .button-container .btn {
+      margin-bottom: 10px; /* Espacio entre botones */
+      width: 100%; /* Ancho del botón al 100% */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Centro Médico Galenos</a>
+      <a class="navbar-brand" href="index.html">Inicio</a>
+      <a class="navbar-brand" href="login.html">Reservar hora</a>
+      <a class="navbar-brand" href="login.html">Historial Médico</a>
+      <a class="navbar-brand" href="login.html">Perfil</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h1 class="text-center">Bienvenidos a Centro Médico Galenos</h1>
+    <div class="row">
+      <!-- Rectángulo izquierdo de 2 columnas -->
+      <div class="col-2">
+        <div class="left-box" style="background-image: url('https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096');"></div>
+      </div>
+
+      <!-- Rectángulo derecho de 10 columnas -->
+      <div class="col-10">
+        <div class="right-box">
+          <!-- Contenedor de botones -->
+          <div class="button-container">
+            <!-- Botones -->
+            <button type="button" class="btn btn-primary">Pedir hora</button>
+            <button type="button" class="btn btn-primary">Cancelar hora</button>
+            <button type="button" class="btn btn-primary">Consulta horas médicas</button>
+            <button type="button" class="btn btn-primary">Solicitar información</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+    </div>
+  </footer>
+
+  <script>
+    // Cambiar imagen en el recuadro izquierdo cada 5 segundos
+    setInterval(function() {
+      var leftBox = document.querySelector('.left-box');
+      var currentImage = leftBox.style.backgroundImage;
+      if (currentImage.includes('https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096')) {
+        leftBox.style.backgroundImage = 'url("https://www.minsal.cl/wp-content/uploads/2018/06/AfichePrevencion.png")';
+      } else {
+        leftBox.style.backgroundImage = 'url("https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096")';
+      }
+    }, 7000); // Cambiar cada 5 segundos
+  </script>
+
+</body>
+</html>

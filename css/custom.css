@@ -39,3 +39,7 @@ body {
 .center-button{
     text-align: center;
 }
+.carousel-caption{
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 15px;
+}

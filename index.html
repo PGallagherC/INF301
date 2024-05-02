@@ -1,110 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Primera Vista</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* Estilos personalizados */
-    body {
-      background-color: #f8f9fa; /* Color de fondo */
-      margin-bottom: 100px; /* Agregar espacio en la parte inferior para el footer */
-    }
-    .navbar {
-      background-color: #007bff; /* Color de fondo de la barra de navegación */
-    }
-    .footer {
-      background-color: #343a40; /* Color de fondo del footer */
-      color: #ffffff; /* Color del texto del footer */
-      text-align: center; /* Centrar el texto en el footer */
-      padding: 20px 0; /* Espaciado interno en el footer */
-      position: fixed; /* Fijar el footer en la parte inferior */
-      width: 100%; /* Ancho del footer al 100% */
-      bottom: 0; /* Alinear el footer en la parte inferior */
-    }
-    .left-box {
-      background-color: #ffffff; /* Color de fondo del rectángulo izquierdo */
-      height: 200px; /* Altura del rectángulo izquierdo */
-      background-size: cover; /* Ajustar tamaño de la imagen */
-    }
-    .right-box {
-      background-image: url('https://www.igaleno.com/wp-content/uploads/2021/07/Diferencias-entre-centro-medico-y-clinica.jpg'); /* Imagen de fondo predeterminada */
-      background-size: cover; /* Ajustar tamaño de la imagen */
-      height: 200px; /* Altura del rectángulo derecho */
-      position: relative; /* Posicionamiento relativo para botones */
-    }
-    .button-container {
-      position: absolute; /* Posicionamiento absoluto */
-      top: 50%; /* Alinear en la mitad superior */
-      left: 50%; /* Alinear en la mitad izquierda */
-      transform: translate(-50%, -50%); /* Centrar */
-      display: flex; /* Usar flexbox */
-      flex-direction: column; /* Alinear botones en columna */
-      align-items: center; /* Centrar horizontalmente */
-    }
-    .button-container .btn {
-      margin-bottom: 10px; /* Espacio entre botones */
-      width: 100%; /* Ancho del botón al 100% */
-    }
-  </style>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Página de inicio</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/custom.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+	<body>
 
-  <!-- Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Centro Médico Galenos</a>
-      <a class="navbar-brand" href="index.html">Inicio</a>
-      <a class="navbar-brand" href="login.html">Reservar hora</a>
-      <a class="navbar-brand" href="login.html">Historial Médico</a>
-      <a class="navbar-brand" href="login.html">Perfil</a>
-    </div>
-  </nav>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container justify-content-center">
+				<a class="navbar-brand" href="#">Centro Médico Galenos</a>
+			</div>
+		</nav>
 
-  <div class="container mt-4">
-    <h1 class="text-center">Bienvenidos a Centro Médico Galenos</h1>
-    <div class="row">
-      <!-- Rectángulo izquierdo de 2 columnas -->
-      <div class="col-2">
-        <div class="left-box" style="background-image: url('https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096');"></div>
-      </div>
+		<div class="main-box container-fluid">
+			<div class="row justify-content-center">
 
-      <!-- Rectángulo derecho de 10 columnas -->
-      <div class="col-10">
-        <div class="right-box">
-          <!-- Contenedor de botones -->
-          <div class="button-container">
-            <!-- Botones -->
-            <button type="button" class="btn btn-primary">Pedir hora</button>
-            <button type="button" class="btn btn-primary">Cancelar hora</button>
-            <button type="button" class="btn btn-primary">Consulta horas médicas</button>
-            <button type="button" class="btn btn-primary">Solicitar información</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+				<!-- menu lateral -->
+				<div class="col-10 col-md-2 mt-4">
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
-    </div>
-  </footer>
+					<div class="left-links">
+						<a href="index.html" class="text-light bg-primary">Inicio</a>
+						<a href="login.html">Pedir hora</a>
+						<a href="login.html">Cancelar hora</a>
+						<a href="login.html">Iniciar sesión</a>
+						<a href="ingreso-pago.html">Pagar atención</a>
+					</div>
+					<div class="dropdown-divider"></div>
+					Usuario sin autenticar
+					<div class="left-box"></div>
+				</div>
 
-  <script>
-    // Cambiar imagen en el recuadro izquierdo cada 5 segundos
-    setInterval(function() {
-      var leftBox = document.querySelector('.left-box');
-      var currentImage = leftBox.style.backgroundImage;
-      if (currentImage.includes('https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096')) {
-        leftBox.style.backgroundImage = 'url("https://www.minsal.cl/wp-content/uploads/2018/06/AfichePrevencion.png")';
-      } else {
-        leftBox.style.backgroundImage = 'url("https://pbs.twimg.com/media/GMaqBT0W0AAG3T9?format=jpg&name=4096x4096")';
-      }
-    }, 7000); // Cambiar cada 5 segundos
-  </script>
+				<!-- contenido -->
+				<div class="col-10 mt-4">
+					<div id="demoCarousel" class="carousel slide" data-ride="carousel">
+						<ul class="carousel-indicators">
+							<li data-target="#demoCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#demoCarousel" data-slide-to="1"></li>
+						</ul>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="contents/principal.jpg" width="1100" height="600">
+								<div class="carousel-caption">
+									<h3>Bienvenidos</h3>
+									<p>En Centro Médico Galenos nos importas</p>
+								</div>   
+							</div>
+							<div class="carousel-item">
+								<img src="contents/influenza.png" width="1100" height="600">
+								<div class="carousel-caption">
+									<h3>Campaña vacunación 2024</h3>
+									<p>pide tu hora online</p>
+								</div>   
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#demoCarousel" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a class="carousel-control-next" href="#demoCarousel" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-</body>
+		<!-- Footer -->
+		<footer class="footer mt-4">
+			<div class="container">
+				<span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+			</div>
+		</footer>
+	</body>
 </html>
