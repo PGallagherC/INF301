@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro e Inicio de Sesión</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados */
+    body {
+      background-color: #f8f9fa; /* Color de fondo */
+    }
+    .navbar {
+      background-color: #007bff; /* Color de fondo de la barra de navegación */
+      color: #ffffff; /* Color del texto de la barra de navegación */
+    }
+    .footer {
+      background-color: #343a40; /* Color de fondo del footer */
+      color: #ffffff; /* Color del texto del footer */
+      text-align: center; /* Centrar el texto en el footer */
+      padding: 20px 0; /* Espaciado interno en el footer */
+    }
+    .left-sidebar {
+      background-color: #f1f1f1;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .left-links {
+      list-style: none;
+      padding: 0;
+    }
+    .left-links li {
+      margin-bottom: 10px;
+    }
+    .left-links a {
+      text-decoration: none;
+      color: #333;
+    }
+    .left-links a:hover {
+      text-decoration: underline;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .btn-block {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Centro Médico Galenos</a>
+    </div>
+  </nav>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Sidebar izquierda -->
+      <div class="col-md-2">
+        <div class="left-sidebar">
+          <ul class="left-links">
+            <li><a href="#">Pedir hora</a></li>
+            <li><a href="#">Cancelar hora</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sesión Funcionarios</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main page -->
+      <div class="col-md-10 main-content">
+        <button type="button" class="btn btn-primary btn-block">Soy Paciente</button>
+        <button type="button" class="btn btn-primary btn-block">Soy Funcionario</button>
+        <form class="mt-4">
+          <div class="form-group row">
+            <label for="email" class="col-md-12">Correo electrónico:</label>
+            <div class="col-md-12">
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="password" class="col-md-12">Contraseña:</label>
+            <div class="col-md-12">
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6 offset-md-3">
+              <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-4">
+    <div class="container">
+      <span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+    </div>
+  </footer>
+
+</body>
+</html>
