@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro Médico Galenos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados */
+    body {
+      background-color: #f8f9fa; /* Color de fondo */
+    }
+    .footer {
+      background-color: #343a40; /* Color de fondo del footer */
+      color: #ffffff; /* Color del texto del footer */
+      text-align: center; /* Centrar el texto en el footer */
+      padding: 20px 0; /* Espaciado interno en el footer */
+    }
+    .jumbotron {
+      background-color: #f8f9fa; /* Color de fondo del jumbotron */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Centro Médico Galenos</a>
+    </div>
+  </nav>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Sidebar izquierda -->
+      <div class="col-md-2">
+        <div class="left-sidebar">
+          <ul class="left-links">
+            <li><a href="#">Pedir hora</a></li>
+            <li><a href="#">Cancelar hora</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sesión Funcionarios</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main page -->
+      <div class="col-md-10">
+        <div class="jumbotron">
+          <p class="lead">Bienvenido a nuestro centro médico.</p>
+          <hr class="my-4">
+          <div class="row">
+            <div class="col-md-10">
+              <button type="button" class="btn btn-primary btn-block mb-2">Soy Paciente</button>
+              <button type="button" class="btn btn-primary btn-block mb-4">Soy Funcionario</button>
+              <form>
+                <div class="form-group">
+                  <label for="email">Correo electrónico:</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña:</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-4">
+    <div class="container">
+      <span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+    </div>
+  </footer>
+
+</body>
+</html>
