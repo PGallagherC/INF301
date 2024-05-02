@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>Primera Vista</title>
+		<title>Edición calendario médicos</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<link rel="mask-icon" href="logo-pin.svg" color="#111">
@@ -36,11 +36,13 @@
 				<!-- menu lateral -->
 				<div class="col-10 col-md-2 mt-4">
 					<div class="left-links">
-						<a href="#">Pedir hora</a>
-						<a href="#">Cancelar hora</a>
-						<a href="calendario.html" class="text-light bg-secondary">Calendario médicos</a>
-						<a href="informe-recaudacion.html">Informe recaudación</a>
+						<a href="calendario.html" class="text-light bg-primary">Calendario médicos</a>
+						<a href="consultar-paciente.html">Pacientes en espera</a>
+						<a href="horas-paciente.html">Cancelar hora</a>
 						<a href="historial-facturas.html">Emisión y registro de comisiones</a>
+						<a href="informe-recaudacion.html">Informe recaudación</a>
+						<a href="index.html">Cerrar sesión</a>
+						<a href="marcar-paciente.html" class="text-muted">Marcar atención médica</a>
 					</div>
 					<div class="dropdown-divider"></div>
 					Usuario: Secretaria
@@ -91,8 +93,9 @@
 							<div class="modal-content">
 								<form id="add-event">
 									<div class="modal-body">
-										<h4>Add Event Detail</h4>        
-										<div class="form-group">
+										<h4>Modificación de horario</h4>
+										<div class="row">       
+										<div class="form-group col-12">
 											<label>Médico</label>
 											<select class="form-control" name="ename">
 												<option value="Global">Global</option>
@@ -102,15 +105,26 @@
 												<option value="Medico_4">Medico 4</option>
 											</select>
 										</div>
-										<div class="form-group">
-											<label>Fecha</label>
-											<input type='text' class="datetimepicker form-control" name="edate"/>
-										</div>        
-										<div class="form-group">
+										<div class="form-group col-12">
+											<label>Evento</label>
+											<select class="form-control" name="ecolor">
+												<option value="Bloqueo">Bloqueo</option>
+												<option value="Disponibilidad">Disponibilidad</option>
+											</select>
+										</div>
+										<div class="form-group col-12 col-md-6">
+											<label>Fecha inicio</label>
+											<input type='date' class="datetimepicker form-control" name="edate" required/>
+										</div>
+										<div class="form-group col-12 col-md-6">
+											<label>Fecha fin</label>
+											<input type='date' class="datetimepicker form-control" name="edate" required/>
+										</div>       
+										<div class="form-group col-12">
 											<label>Description</label>
 											<textarea class="form-control" name="edesc"></textarea>
 										</div>
-										<div class="form-group">
+										<div class="form-group col-12">
 											<label>Color</label>
 											<select class="form-control" name="ecolor">
 												<option value="fc-bg-default">fc-bg-default</option>
@@ -120,7 +134,7 @@
 												<option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
 											</select>
 										</div>
-										<div class="form-group">
+										<div class="form-group col-12">
 											<label>Event Icon</label>
 											<select class="form-control" name="eicon">
 												<option value="circle">circle</option>
@@ -129,11 +143,12 @@
 												<option value="suitcase">suitcase</option>
 												<option value="calendar">calendar</option>
 											</select>
+										</div>
 										</div>        
 									</div>
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" >Save</button>
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>        
+										<button type="submit" class="btn btn-primary" >Guardar</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>        
 									</div>
 								</form>
 							</div>

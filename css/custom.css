@@ -20,7 +20,7 @@ body {
 .left-links {
     padding-top: 20px;
     background-color: #f1f1f1;
-    max-height: calc(100vh - 300px); 
+    /*max-height: calc(100vh - 300px); */
     overflow-y: auto; 
 }
 .left-links a {

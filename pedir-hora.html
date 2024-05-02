@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Agendar/Eliminar Hora</title>
+	<title>Agendar Hora</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="mask-icon" href="logo-pin.svg" color="#111">
@@ -13,50 +13,8 @@
 	<link rel="stylesheet" href="css/awesome.min.css">
 	<link rel="stylesheet" href="css/datepicker.css">
 	<link rel="stylesheet" href="css/FullCalendar.css" />
-	<style>
-		body {
-			background-color: #f8f9fa;
-		}
-
-		.navbar {
-			background-color: #007bff;
-		}
-
-		.footer {
-			background-color: #343a40;
-			color: #ffffff;
-			text-align: center;
-			padding: 20px 0;
-		}
-
-		.main-box {
-			background-color: #d9d9d9;
-			height: auto;
-		}
-
-		.left-links {
-			padding-top: 20px;
-			background-color: #f1f1f1;
-			max-height: calc(100vh - 300px);
-			overflow-y: auto;
-		}
-
-		.left-links a {
-			display: block;
-			padding: 10px;
-			text-decoration: none;
-			color: #333;
-		}
-
-		.left-links a:hover {
-			background-color: #ddd;
-		}
-
-		.carousel-inner img {
-			width: 100%;
-			object-fit: cover;
-		}
-	</style>
+	<link rel="stylesheet" href="css/custom.css"/> <!-- CUSTOM CSS -->
+	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -81,28 +39,27 @@
 			<!-- menu lateral -->
 			<div class="col-10 col-md-2 mt-4">
 				<div class="left-links">
-					<a href="#">Pedir hora</a>
-					<!-- <a href="#">Cancelar hora</a> -->
-					<a href="#" class="text-light bg-secondary">Inicio</a>
-					<a href="#">Login</a>
+					<a href="pedir-hora.html" class="text-light bg-primary">Pedir hora</a>
+					<a href="horas-paciente.html">Cancelar hora</a>
+					<a href="index.html">Salir</a>
 				</div>
 				<div class="left-box"></div>
 			</div>
 
 			<!-- contenido -->
 			<div class="col-10 mt-4">
-				<div class="col-10 mt-4">
-					<label> Selecciona la fecha de tu cita: </label>
+				<div class="col-12 mt-4">
+					<h2>1. Selecciona la especialidad de tu cita</h2>
 					<select class="form-control" name="ename2">
-						<option value="Global">Mis horas</option>
-						<option value="Medico_1">Medico 1</option>
-						<option value="Medico_2">Medico 2</option>
-						<option value="Medico_3">Medico 3</option>
-						<option value="Medico_4">Medico 4</option>
+						<option value="Global">Especialidad</option>
+						<option value="Especialidad_1">Especialidad 1</option>
+						<option value="Especialidad_2">Especialidad 2</option>
+						<option value="Especialidad_3">Especialidad 3</option>
+						<option value="Especialidad_4">Especialidad 4</option>
 					</select>
 				</div>
 				<div class="p-5">
-					<h2 class="mb-4">Calendario</h2>
+					<h2 class="mb-4">2. Selecciona fechapara reservar</h2>
 					<div class="card">
 						<div class="card-body p-0">
 							<div id="calendar"></div>
@@ -136,16 +93,16 @@
 								<div class="modal-body">
 									<h4>Agendar Hora</h4>
 									<div class="form-group">
-										<label for="disabledInput">Médico</label>
+										<label for="disabledInput">Médico especialidad</label>
 										<input type="text" class="form-control" id="disabledInput"
-											placeholder="Médico Elegido" disabled>
+											placeholder="Especialidad Elegida" disabled>
 									</div>
 									<div class="form-group">
 										<!-- <input type='text' class="datetimepicker form-control" name="edate"/> -->
 										<label for="disabledDatePicker">Fecha</label>
 										<div class="input-group">
-											<input type="date" class="form-control" id="disabledDatePicker"
-												placeholder="Fecha Elegida" disabled>
+											<input type="date" value="02/05/2024" class="form-control" id="disabledDatePicker"
+												placeholder="02/05/2024" disabled>
 											<div class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 											</div>
@@ -178,21 +135,19 @@
 									</script>
 
 									<div class="form-group">
-										<label>Description</label>
+										<label>Notas adicionales</label>
 										<textarea class="form-control" name="edesc"></textarea>
 									</div>
 								</div>
 								<div class="modal-footer">
-									<div class="row">
-										<div class="col-12 mb-2">
-											<button type="submit" class="btn btn-primary btn-block">Agendar</button>
-										</div>
-										<div class="col-12 mb-2">
-											<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Eliminar</button>
-										</div>
-										<div class="col-12">
-											<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button>
-										</div>
+									<div class="col-12 mb-2">
+										<button type="submit" class="btn btn-primary btn-block">Agendar</button>
+									</div>
+									<!--<div class="col-12 mb-2">
+										<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Eliminar</button>
+									</div>-->
+									<div class="col-12 mb-2">
+										<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button>
 									</div>
 								</div>
 							</form>

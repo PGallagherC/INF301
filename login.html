@@ -5,42 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Iniciar Sesión</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<style>
-			/* Estilos personalizados */
-			body {
-			background-color: #f8f9fa; /* Color de fondo */
-			}
-			.navbar {
-			background-color: #007bff; /* Color de fondo de la barra de navegación */
-			}
-			.footer {
-			background-color: #343a40; /* Color de fondo del footer */
-			color: #ffffff; /* Color del texto del footer */
-			text-align: center; /* Centrar el texto en el footer */
-			padding: 20px 0; /* Espaciado interno en el footer */
-			}
-			.login-container {
-			text-align: center; /* Centrar elementos */
-			}
-			.register-link {
-			margin-top: 20px; /* Espacio superior */
-			}
-			.left-links {
-			padding-top: 20px;
-			background-color: #f1f1f1;
-			max-height: calc(100vh - 300px); 
-			overflow-y: auto; 
-			}
-			.left-links a {
-			display: block;
-			padding: 10px;
-			text-decoration: none;
-			color: #333;
-			}
-			.left-links a:hover {
-			background-color: #ddd;
-			}
-		</style>
+		<link rel="stylesheet" href="css/custom.css"/>
+
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
 
@@ -52,57 +22,119 @@
 		</nav>
 
 		<div class="container-fluid">
-			<div class="row justify-content-center align-items-center">
+			<div class="row justify-content-center">
 
 				<!-- menu lateral -->
 				<div class="col-10 col-md-2 mt-4">
 
 					<div class="left-links">
-						<a href="#">Pedir hora</a>
-						<a href="#">Cancelar hora</a>
-						<a href="#">Inicio</a>
-						<a href="#" class="text-light bg-secondary">Login</a>
+						<a href="index.html">Inicio</a>
+						<a href="login.html">Pedir hora</a>
+						<a href="login.html">Cancelar hora</a>
+						<a href="login.html" class="text-light bg-primary">Iniciar sesión</a>
+						<a href="ingreso-pago.html">Pagar atención</a>
 					</div>
-
-					col-10 col-md-2
+					<div class="dropdown-divider"></div>
+					Usuario sin autenticar
 					<div class="left-box"></div>
 				</div>
 
 				<!-- Contenedor del formulario de inicio de sesión -->
-				<div class="container login-container col-10 mt-4">
-					<h2>Inicio de Sesión - Col 10</h2>
+				<div class="main-box container login-container col-10 mt-4">
 					<div class="row justify-content-center">
+						<div class="col-12">
+							<p class="lead center-button">Bienvenido a nuestro centro médico.</p>
+          				<hr class="my-4">
+						</div>
 						<!-- Botón para seleccionar si se es paciente o funcionario -->
 						<div class="col-sx-10 col-sm-6 mt-4">
-							<button type="button" class="btn btn-primary btn-block">Soy Paciente</button>
+							<button type="button" class="btn btn-info btn-block">Soy Paciente</button>
 						</div>
 						<div class="col-sx-10 col-sm-6 mt-4">
-							<button type="button" class="btn btn-primary btn-block">Soy Funcionario</button>
+							<button type="button" class="btn btn-info btn-block">Soy Funcionario</button>
 						</div>
 					</div>
 					<!-- Formulario de inicio de sesión -->
 					<form>
 						<div class="form-group mt-4">
-							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico">
+							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico" required>
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" required>
 						</div>
 						<div class="container col-sx-10 col-sm-6">
 							<button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
 						</div>
 					</form>
 					<!-- Mensaje para registrarse -->
-					<div class="register-link mt-3">
-						<span>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></span>
+					<div class="center-button mt-3">
+						<span>¿No tienes una cuenta? 
+							<a href="#" data-toggle="modal" data-target="#modal-view-register">
+								Regístrate aquí
+							</a>
+						</span>
 					</div>
 				</div>
 
 			</div>
 		</div>
 
+		<!-- Modal content emitir nueva factura -->
+		<div id="modal-view-register" data-backdrop="static" class="modal modal-top fade">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<form id="register-user">
+						<div class="modal-body">
+
+							<!-- Modal title -->
+							<h4>Registro de usuario</h4>
+
+							<div class="row">	
+
+								<!-- nombre y appelido -->
+								<div class="form-group col-12">
+									<label>Nombre apellido</label>
+									<input type="text" placeholder="Nombre" class="form-control" name="eappointment" required/>
+								</div>
+
+								<!-- rut -->
+								<div class="form-group col-12">
+									<label>Rut/Pasaporte</label>
+									<input type="text" placeholder="12345678-k" class="form-control" name="eappointment" required/>
+								</div>
+
+								<div class="form-group col-12">
+									<label>Correo electrónico</label>
+									<input type="email" class="form-control" id="registerInputEmail1" placeholder="Correo electrónico" required>
+								</div>
+								<div class="form-group col-12">
+									<label>Contraseña</label>
+									<input type="password" class="form-control" id="registerInputPassword1" placeholder="Contraseña" required>
+								</div>
+
+								<div class="form-group col-12">
+									Se le enviará un correo electrónico para validar su cuenta.
+								</div>
+							</div>        
+						</div>
+
+						<!-- Modal Actions -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-success" >Registrarse</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+						</div>
+						<div class="modal-footer">
+							DEV:
+							<a href="pedir-hora.html">Entrar como papciente</a>
+							<a href="calendario.html">Entrar como administrativo</a>        
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<!-- Footer -->
-		<footer class="footer mt-5">
+		<footer class="footer">
 			<div class="container">
 				<span>Derechos de autor © 2024 Centro Médico Galenos</span>
 			</div>

@@ -6,6 +6,7 @@
     <title>Horas Paciente</title>
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
 </head>
 <body>
 
@@ -16,24 +17,28 @@
     </div>
 </nav>
 
-<div class="container-fluid mt-4">
+<div class="main-box container-fluid mt-4">
     <div class="row justify-content-center">
 
         <!-- Barra lateral -->
         <div class="col-2 col-md-2">
             <div class="left-links">
-                <a href="consultar-paciente.html">Consultar paciente en espera</a>
-                <a href="horas-paciente.html" class="text-light bg-secondary">Horas paciente</a>
-                <a href="marcar-paciente.html">Marcar paciente como atendido</a>
-                <a href="listado-pacientes.html">Listado de pacientes</a>
-                <a href="#">Logout</a>
+                <a href="calendario.html" >Calendario médicos</a>
+                <a href="consultar-paciente.html">Pacientes en espera</a>
+                <a href="horas-paciente.html" class="text-light bg-primary">Cancelar hora</a>
+                <a href="historial-facturas.html">Emisión y registro de comisiones</a>
+                <a href="informe-recaudacion.html">Informe recaudación</a>
+                <a href="index.html">Cerrar sesión</a>
+                <a href="marcar-paciente.html" class="text-muted">Marcar atención médica</a>
             </div>
+            <div class="dropdown-divider"></div>
+            Usuario: Secretaria - Paciente
             <div class="left-box"></div>
         </div>
 
         <!-- Contenido principal -->
         <div class="col-10">
-            <div class="jumbotron">
+            <div class="container-fluid">
                 <h2>Horas Paciente</h2>
                 <br>
                 <div id="filters" class="mb-3">
@@ -64,8 +69,8 @@
                             <td>Doctor 1</td>
                             <td>
                                 <div class="btn-group-sm" role="group">
-                                    <button type="button" class="btn btn-primary">Ver detalles</button>
-                                    <button type="button" class="btn btn-danger">Cancelar cita</button>
+                                    <button type="button" class="btn btn-primary m-1">Ver detalles</button>
+                                    <button type="button" class="btn btn-danger m-1">Cancelar cita</button>
                                 </div>
                             </td>
                         </tr>

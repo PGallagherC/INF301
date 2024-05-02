@@ -6,6 +6,7 @@
     <title>Consultar Paciente en Espera</title>
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
 </head>
 <body>
 
@@ -16,39 +17,50 @@
     </div>
 </nav>
 
-<div class="container-fluid mt-4">
+<div class="main-box container-fluid mt-4">
     <div class="row justify-content-center">
 
         <!-- Barra lateral -->
         <div class="col-2 col-md-2">
             <div class="left-links">
-                <a href="consultar-paciente.html" class="text-light bg-secondary">Consultar paciente en espera</a>
-                <a href="horas-paciente.html">Horas paciente</a>
-                <a href="marcar-paciente.html">Marcar paciente como atendido</a>
-                <a href="listado-pacientes.html">Listado de pacientes</a>
-                <a href="#">Logout</a>
+                <a href="calendario.html" >Calendario médicos</a>
+                <a href="consultar-paciente.html" class="text-light bg-primary">Pacientes en espera</a>
+                <a href="horas-paciente.html">Cancelar hora</a>
+                <a href="historial-facturas.html">Emisión y registro de comisiones</a>
+                <a href="informe-recaudacion.html">Informe recaudación</a>
+                <a href="index.html">Cerrar sesión</a>
+                <a href="marcar-paciente.html" class="text-muted">Marcar atención médica</a>
             </div>
+            <div class="dropdown-divider"></div>
+            Usuario: Secretaria - Médico
             <div class="left-box"></div>
         </div>
 
         <!-- Contenido principal -->
         <div class="col-10">
-            <div class="jumbotron">
-                <h2>Consultar Paciente en Espera</h2>
+            <div class="container-fluid">
+                <h2>Consultar Paciente en Espera hoy</h2>
                 <br>
-                <div id="filters" class="mb-3">
-                    <label for="filterDate">Filtrar por Fecha:</label>
-                    <input type="date" id="filterDate">
-                    <label for="filterDoctor">Filtrar por Doctor:</label>
-                    <select id="filterDoctor">
-                        <option value="doctor1">Doctor 1</option>
-                        <option value="doctor2">Doctor 2</option>
-                        <option value="doctor3">Doctor 3</option>
-                    </select>
-                </div>
-                <div id="search" class="mb-3">
-                    <label for="searchInput">Buscar por Nombre o RUT:</label>
-                    <input type="text" id="searchInput" placeholder="Ingrese nombre o RUT">
+                <div id="filters" class="row mb-3">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <label for="filterDate">Filtrar por Fecha:</label>
+                        <input type="date" id="filterDate">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                        <label for="filterDoctor">Filtrar por Doctor:</label>
+                        <select id="filterDoctor">
+                            <option value="all">Todos</option>
+                            <option value="doctor1">Doctor 1</option>
+                            <option value="doctor2">Doctor 2</option>
+                            <option value="doctor3">Doctor 3</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-lg-7 col-xl-5">
+                        <div id="search" class="mb-3">
+                            <label for="searchInput">Buscar por Nombre o RUT:</label>
+                            <input type="text" id="searchInput" placeholder="Ingrese nombre o RUT">
+                        </div>
+                    </div>
                 </div>
                 <table class="table">
                     <thead>
@@ -69,9 +81,9 @@
                             <td>10:00</td>
                             <td>Doctor 2</td>
                             <td>
-                                <div class="btn-group-sm" role="group">
-                                    <button type="button" class="btn btn-primary">Ver detalles</button>
-                                    <button type="button" class="btn btn-danger">Cancelar cita</button>
+                                <div class="btn-group-sm row" role="group">
+                                    <button type="button" class="btn btn-primary m-1">Ver detalles</button>
+                                    <button type="button" class="btn btn-danger m-1">Cancelar cita</button>
                                 </div>
                             </td>
                         </tr>
