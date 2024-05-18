@@ -1,29 +1,12 @@
 const express = require('express');
 
+const UsersRouter = require('./rutas/user');
+
 const app = express();
-
-// Datos
-
-const Data_Dummy = [
-    {
-        id: '1',
-        name: 'Pablo Gallagher',
-        pais: 'Chile'
-    }
-]
 
 //rutas
 
-app.get('/users', (req, res) => {
-    console.log('Listening Users');
-
-    res.json({
-        status: 'exito',
-        data: {
-            users: Data_Dummy
-        }
-    });
-});
+app.use('/api/v1/users', UsersRouter);
 
 //Listening global
 
