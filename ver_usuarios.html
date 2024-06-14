@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Página de inicio</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/custom.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container justify-content-center">
+				<a class="navbar-brand" href="#">Centro Médico Galenos</a>
+			</div>
+		</nav>
+
+		<div class="main-box container-fluid">
+			<div class="row justify-content-center">
+
+				<!-- menu lateral -->
+				<div class="col-10 col-md-2 mt-4">
+
+					<div class="left-links">
+						<a href="index.html" class="text-light bg-primary">Inicio</a>
+						<a href="login.html">Pedir hora</a>
+						<a href="login.html">Cancelar hora</a>
+						<a href="login.html">Iniciar sesión</a>
+						<a href="ingreso-pago.html">Pagar atención</a>
+						<a href="ver_usuarios.html">Pagar atención</a>
+						<a href="ver_roles.html">Pagar atención</a>
+					</div>
+					<div class="dropdown-divider"></div>
+					Usuario sin autenticar
+					<div class="left-box"></div>
+				</div>
+
+				<!-- contenido -->
+				<div class="col-10 mt-4" id="roles">
+					<table id="resultsTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Pass</th>
+                                <th>Nombre</th>
+                                <th>Rut</th>
+                                <th>Mail</th>
+                                <th>Rol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Results will be appended here -->
+                        </tbody>
+                    </table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer mt-4">
+			<div class="container">
+				<span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
+			</div>
+		</footer>
+        <script>
+            const endpoint = 'http://localhost:3000/graphql';
+            const query = `
+            query GetUsuarios {
+				getUsuarios {
+					id
+					usuario
+					pass
+					nombre
+					rut
+					mail
+					nrol
+				}
+			}`;
+            const query2 = `
+            query GetRol($filter: RolFilter) {
+                getRol(input: $filter) {
+                    id
+                    rol
+                    nrol
+                }
+            }`;
+
+            $.ajax({
+                url: endpoint,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ query }),
+                success: function(response) {
+                    const usuarios = response.data.getUsuarios;
+                    const tbody = $('#resultsTable tbody');
+                    usuarios.forEach(user => {
+						let nrol = user.nrol;
+						let variables = { filter: { nrol } };
+						$.ajax({
+							url: endpoint,
+							method: 'POST',
+							contentType: 'application/json',
+							data: JSON.stringify({
+								query: query2,
+								variables: variables
+							}),
+							success: async function(response) {
+								let rol = await response.data.getRol.rol;
+								tbody.append(`
+									<tr>
+										<td>${user.id}</td>
+										<td>${user.usuario}</td>
+										<td>${user.pass}</td>
+										<td>${user.nombre}</td>
+										<td>${user.rut}</td>
+										<td>${user.mail}</td>
+										<td>${rol}</td>
+									</tr>
+								`);
+							},
+							error: function(error) {
+								console.error('Error fetching data', error);
+							}
+						})
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching data', error);
+                }
+
+            })
+        </script>
+	</body>
+</html>
