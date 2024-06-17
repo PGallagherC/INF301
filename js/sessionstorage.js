@@ -71,7 +71,7 @@ function saveCurrentSession(data) {
                 // Cajero
                 window.location.href = 'ingreso-pago.html';
                 break;
-            case 1:
+            case 5:
                 // Paciente
                 window.location.href = 'pedir-hora.html';
                 break;
@@ -120,10 +120,10 @@ function restoreSession(){
     return null;
 }
 
-function displaySessionHTML(nombre, nrol){
+async function displaySessionHTML(nombre, nrol){
     // obteniendo definición de nrol 
     let rol = "N/A";
-    $.ajax({
+    await $.ajax({
         url: endpoint,
         method: 'POST',
         contentType: 'application/json',
@@ -131,8 +131,8 @@ function displaySessionHTML(nombre, nrol){
             query: queryGetRol,
             variables: { filter: { nrol } }
         }),
-        success: async function(response) {
-            rol = await response.data.getRol.rol;
+        success: function(response) {
+            rol = response.data.getRol.rol;
         },
         error: function(error) {
             console.error('Error fetching data', error);

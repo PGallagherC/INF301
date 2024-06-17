@@ -13,6 +13,19 @@ export const queryGetUsuarios = `
         }
     }`;
 
+export const mutationRegistrarUsuario = `
+    mutation AddUsuario($insertUsuario: NuevoUsuario) {
+      addUsuario(input: $insertUsuario) {
+        id
+        usuario
+        pass
+        nombre
+        rut
+        mail
+        nrol
+      }
+    }`;
+
 // { filter: { nrol } } as filter  
 export const queryGetRol = `
     query GetRol($filter: RolFilter) {

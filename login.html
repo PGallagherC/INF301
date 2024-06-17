@@ -96,13 +96,13 @@
 								<!-- nombre y appelido -->
 								<div class="form-group col-12">
 									<label>Nombre apellido</label>
-									<input type="text" placeholder="Nombre" class="form-control" name="eappointment" required/>
+									<input type="text" id="registerInputNombre1" placeholder="Nombre" class="form-control" name="eappointment" required/>
 								</div>
 
 								<!-- rut -->
 								<div class="form-group col-12">
 									<label>Rut/Pasaporte</label>
-									<input type="text" placeholder="12345678-k" class="form-control" name="eappointment" required/>
+									<input type="text" id="registerInputRut1" placeholder="12345678-k" class="form-control" name="eappointment" required/>
 								</div>
 
 								<div class="form-group col-12">
@@ -122,7 +122,7 @@
 
 						<!-- Modal Actions -->
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-success" >Registrarse</button>
+							<button type="submit" class="btn btn-success" id="registerButton">Registrarse como paciente</button>
 							<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
 						</div>
 						<div class="modal-footer">
@@ -144,7 +144,7 @@
 
 	<script src="js/sessionstorage.js"  type="module" ></script>
 	<script type="module">
-		import { endpoint, queryLogin, queryGetUsuarioRut } from "./js/utilsgraphql.js";
+		import { endpoint, queryLogin, queryGetUsuarioRut, mutationRegistrarUsuario } from "./js/utilsgraphql.js";
 
 		$('#loginButton').click(async function(e) {
 			// obtener datos para variable dataLogin descrita en queryLogin
@@ -194,6 +194,35 @@
 				}
 			});
 		});
+		
+		$('#registerButton').click(async function(e){
+			let insertUsuario = {
+				usuario: $('#registerInputNombre1').val().split(" ")[0],
+				pass : $('#registerInputPassword1').val(),
+				nombre : $('#registerInputNombre1').val(),
+				rut : $('#registerInputRut1').val(),
+				mail : $('#registerInputEmail1').val(),
+				nrol : "5" //default paciente, TODO query backend to set Paciente instead hardcoded nrol
+			};
+			e.preventDefault();
+			$.ajax({
+				url: endpoint,
+				method: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					query: mutationRegistrarUsuario,
+					variables: {insertUsuario}
+				}),
+				success: async function(response) {
+					let usuario = await response.data.addUsuario;
+					// Guardando sesión - TODO: ver como evitar función global
+					window.globalSessionUtils.saveCurrentSession(usuario);
+				},
+				error: function(error) {
+					console.error('Error fetching data', error);
+				}
+			});
+		})
 	</script>
 	</body>
 </html>
