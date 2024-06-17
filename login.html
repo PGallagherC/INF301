@@ -37,7 +37,7 @@
 						<a href="ver_roles.html">Ver Roles</a>
 					</div>
 					<div class="dropdown-divider"></div>
-					Usuario sin autenticar
+					<div id="infoSession"> Usuario sin autenticar</div>
 					<div class="left-box"></div>
 				</div>
 
@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<!-- Formulario de inicio de sesión -->
-					<form>
+					<form id="login-user">
 						<div class="form-group mt-4">
 							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico" required>
 						</div>
@@ -65,7 +65,7 @@
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" required>
 						</div>
 						<div class="container col-sx-10 col-sm-6">
-							<button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+							<button type="submit" class="btn btn-primary btn-block" id="loginButton">Iniciar Sesión</button>
 						</div>
 					</form>
 					<!-- Mensaje para registrarse -->
@@ -142,5 +142,58 @@
 			</div>
 		</footer>
 
+	<script src="js/sessionstorage.js"  type="module" ></script>
+	<script type="module">
+		import { endpoint, queryLogin, queryGetUsuarioRut } from "./js/utilsgraphql.js";
+
+		$('#loginButton').click(async function(e) {
+			// obtener datos para variable dataLogin descrita en queryLogin
+			let dataLogin = {
+				usuario: "", 
+				pass: $('#exampleInputPassword1').val(),
+				mail: $('#exampleInputEmail1').val()
+			};
+			e.preventDefault();
+			$.ajax({
+				url: endpoint,
+				method: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					query: queryLogin,
+					variables: {dataLogin}
+				}),
+				success: async function(response) {
+					let result = await response.data.login;
+					if (result.mensaje.includes('correcto')) {
+
+						// query data adicional usuario que no entrega login, dado rut. TODO: mejorar backend login
+						let rut = result.rut;
+						$.ajax({
+							url: endpoint,
+							method: 'POST',
+							contentType: 'application/json',
+							data: JSON.stringify({
+								query: queryGetUsuarioRut,
+								variables: { rut }
+							}),
+							success: async function(response) {
+								let usuario = await response.data.getUsuarioRut;
+								// Guardando sesión - TODO: ver como evitar función global
+								window.globalSessionUtils.saveCurrentSession(usuario);
+							},
+							error: function(error) {
+								console.error('Error fetching data', error);
+							}
+						})
+					}else{
+						alert(result.mensaje)
+					}
+				},
+				error: function(error) {
+					console.error('Error fetching data', error);
+				}
+			});
+		});
+	</script>
 	</body>
 </html>

@@ -26,21 +26,17 @@
 				<div class="col-10 col-md-2 mt-4">
 
 					<div class="left-links">
-						<a href="index.html" class="text-light bg-primary">Inicio</a>
-						<a href="login.html">Pedir hora</a>
-						<a href="login.html">Cancelar hora</a>
-						<a href="login.html">Iniciar sesión</a>
-						<a href="ingreso-pago.html">Pagar atención</a>
-						<a href="ver_usuarios.html">Ver Usuarios</a>
+						<a href="ver_usuarios.html" class="text-light bg-primary">Ver Usuarios</a>
 						<a href="ver_roles.html">Ver Roles</a>
+						<a href="login.html" id="logoutButton">cerrar sesión</a>
 					</div>
 					<div class="dropdown-divider"></div>
-					Usuario sin autenticar
+					<div id="infoSession"> Usuario sin autenticar</div>
 					<div class="left-box"></div>
 				</div>
 
 				<!-- contenido -->
-				<div class="col-10 mt-4" id="roles">
+				<div class="col-10 mt-4" id="roles" style="overflow: auto;">
 					<table id="resultsTable" class="table">
                         <thead>
                             <tr>
@@ -67,6 +63,7 @@
 				<span>Quienes somos - FAQ - Contacto - Derechos de autor © 2024</span>
 			</div>
 		</footer>
+		<script src="js/sessionstorage.js"  type="module" ></script>
         <script>
             const endpoint = 'http://localhost:3000/graphql';
             const query = `
