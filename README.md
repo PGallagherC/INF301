@@ -16,11 +16,11 @@ Javier Torres		201673087-7
 
 - Flujo funcionario (medico) > Pacientes en espera > Marcar atención médico
 
-## Requermientos para integración
+## Requermientos de integración
 
-- [Backend del proyecto](https://github.com/J122016/INF301-CodeSquad-Back).
+Tener el local [Backend del proyecto](https://github.com/J122016/INF301-CodeSquad-Back).
 
-## Flujos diaponibles (integrados uso de query y mutación)
+### Flujos diaponibles (integrados uso de query y mutación)
 
 - Flujo registro y login: Inicio > Iniciar sesión (login) > ¿No tienes una cuenta? Regístrate aquí (registro)
 
