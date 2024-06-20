@@ -6,7 +6,7 @@ Cristian Tapia		202073086-5<br/>
 David Valdés		202073125-K<br/>
 Javier Torres		201673087-7
 
-## Flujos disponibles
+## Flujos disponibles (maquetas)
 
 - Flujo inicial: Inicio > Login > Registrarse > seguir con flujo paciente o funcionario (secretaria - médico) > pagar atención
 
@@ -16,10 +16,20 @@ Javier Torres		201673087-7
 
 - Flujo funcionario (medico) > Pacientes en espera > Marcar atención médico
 
+## Requermientos para integración
+
+- [Backend del proyecto](https://github.com/J122016/INF301-CodeSquad-Back).
+
+## Flujos diaponibles (integrados uso de query y mutación)
+
+- Flujo registro y login: Inicio > Iniciar sesión (login) > ¿No tienes una cuenta? Regístrate aquí (registro)
+
+- Administrador de usuarios: Inicio > Ver usuarios (temporalmente abierto) o bien: Iniciar sesión (como Admin si se tiene usuario) o 
+
 ---
 
 Sin mapear (usados como base):
 - listado-pacientes.html
-- index_old.html (deprecado)
+- index_2.html (deprecado)
 - listado_pacientes_old.html (deprecado)
 - RegistroUsuarioLogin.html (deprecado)

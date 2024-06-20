@@ -196,6 +196,11 @@
 		});
 		
 		$('#registerButton').click(async function(e){
+			e.preventDefault();
+			if (!$('#register-user')[0].checkValidity()) {
+				alert("Formulario de usuario inválido.\nRevise los datos e intente nuevamente.")
+        		return;
+        	}
 			let insertUsuario = {
 				usuario: $('#registerInputNombre1').val().split(" ")[0],
 				pass : $('#registerInputPassword1').val(),
@@ -204,7 +209,6 @@
 				mail : $('#registerInputEmail1').val(),
 				nrol : "5" //default paciente, TODO query backend to set Paciente instead hardcoded nrol
 			};
-			e.preventDefault();
 			$.ajax({
 				url: endpoint,
 				method: 'POST',

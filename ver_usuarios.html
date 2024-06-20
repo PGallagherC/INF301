@@ -37,7 +37,7 @@
 
 				<!-- contenido -->
 				<div class="col-10 mt-4" id="roles" style="overflow: auto;">
-					<table id="resultsTable" class="table">
+					<table id="resultsTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -47,10 +47,42 @@
                                 <th>Rut</th>
                                 <th>Mail</th>
                                 <th>Rol</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Results will be appended here -->
+							<tr>
+                                <form id="formNuevoUsuario">
+                                <td>-</td>
+                                    <td>
+                                        <input style="width: auto;" type="text" class="form-control" id="aliasUsuarioNuevo" placeholder="alias" required>
+                                    </td>
+                                    <td>
+                                        <input style="width: auto;" type="password" class="form-control" id="claveUsuarioNuevo" placeholder="pass" value="" required>
+                                    </td>
+									<td>
+                                        <input style="width: auto;" type="text" class="form-control" id="nombreUsuarioNuevo" placeholder="nombre completo" required>
+                                    </td>
+									<td>
+                                        <input style="width: auto;" type="text" class="form-control" id="rutUsuarioNuevo" placeholder="12345678-9" required>
+                                    </td>
+									<td>
+                                        <input style="width: auto;" type="email" class="form-control" id="mailUsuarioNuevo" placeholder="correo@ejemplo.com" required>
+                                    </td>
+									<td>
+										<select style="width: auto;" class="custom-select" id="rolUsuarioNuevo" required>
+											<option value="" selected>seleccionar</option>
+											<!-- Add options dynamically here -->
+										 	<!--<option value="1">One</option>-->
+										  </select>
+                                    </td>
+                                    <td style="display: flex;">
+                                        <button style="margin: 2px;" type="submit" class="btn btn-success" id="registerUserButton">Crear</button>
+                                        <button style="margin: 2px;" type="button" class="btn btn-danger"  id="discardRegisterButton">Descartar</button>        
+                                    </td>
+                                </form>
+                            </tr>
                         </tbody>
                     </table>
 				</div>
@@ -86,6 +118,45 @@
                     nrol
                 }
             }`;
+			const query3 = `
+            query GetRoles {
+                getRoles {
+                    id
+                    rol
+                    nrol
+                }
+            }`;
+			const query4 = `
+			mutation DeleteUsuario($rut: String!) {
+  				deleteUsuario(rut: $rut) {
+    				id
+					mensaje
+				}
+			}`;
+			const mutationRegistrarUsuario = `
+			mutation AddUsuario($insertUsuario: NuevoUsuario) {
+				addUsuario(input: $insertUsuario) {
+					id
+					usuario
+					pass
+					nombre
+					rut
+					mail
+					nrol
+				}
+			}`;
+			const mutationUpdateUsuario = `
+			mutation UpdateUsuario($rut: String!, $modUsuario: CambioUsuario) {
+				updateUsuario(rut: $rut, input: $modUsuario) {
+					id
+					usuario
+					pass
+					nombre
+					rut
+					mail
+					nrol
+				}
+			}`;
 
             $.ajax({
                 url: endpoint,
@@ -110,13 +181,23 @@
 								let rol = await response.data.getRol.rol;
 								tbody.append(`
 									<tr>
-										<td>${user.id}</td>
-										<td>${user.usuario}</td>
-										<td>${user.pass}</td>
-										<td>${user.nombre}</td>
-										<td>${user.rut}</td>
-										<td>${user.mail}</td>
-										<td>${rol}</td>
+										<form id="editUserForm_${user.rut}">
+										<td title=${user.id}>${user.id.substring(0,5)+"..."}</td>
+										<td><input class="form-control" type="text" id=${"usuarioUsuario"+user.rut} value="${user.usuario}"></td>
+										<td><input class="form-control" type="password" id=${"claveUsuario"+user.rut} value="${user.pass}"></td>
+										<td><input class="form-control"type="text" id=${"nombreUsuario"+user.rut} value="${user.nombre}"></td>
+										<td><input class="form-control" type="text" id=${"rutUsuario"+user.rut} value="${user.rut}" disabled></td>
+										<td><input class="form-control" type="email" id=${"mailUsuario"+user.rut} value="${user.mail}"></td>
+										<td>
+											<select style="width: auto;" class="custom-select" id=${"rolUsuario"+user.rut} required>
+												<option value=${nrol} selected>${rol}</option>
+										  	</select>
+										</td>
+										<td style="display: flex;">
+                                    		<button style="margin: 2px;" type="button" class="btn btn-warning updateUserButton" id=${"updateUserButton_"+user.rut}>Guardar</button>
+                                    		<button style="margin: 2px;" type="button" class="btn btn-danger deleteUserButton"  id=${"deleteUserButton_"+user.rut}>Borrar</button>        
+                                		</td>
+										</form>
 									</tr>
 								`);
 							},
@@ -125,12 +206,148 @@
 							}
 						})
                     });
+
+					// select field generation
+					$.ajax({
+						url: endpoint,
+						method: 'POST',
+						contentType: 'application/json',
+						data: JSON.stringify({query: query3 }),
+						success: function(response) {
+							let roles = response.data.getRoles;
+							// add to each select roles.rol as text and roles.nrol as value
+							// get all select elements with class custom-select
+							$('select.custom-select').each(function(index, selectElement) {
+								let select = $(selectElement);
+								// add options to each select element
+								$.each(roles, function(index, role) {
+									select.append($('<option>').val(role.nrol).text(role.rol));
+								});
+							});
+
+						},
+						error: function(error) {
+							console.error('Error fetching data', error);
+						}
+					});
                 },
                 error: function(error) {
                     console.error('Error fetching data', error);
                 }
 
-            })
+            });
+
+			// Limpiar formulario registro usuarios
+			$('#discardRegisterButton').click(async function(e){
+				e.preventDefault();
+				$('#aliasUsuarioNuevo').val(''); $('#claveUsuarioNuevo').val('')
+				$('#nombreUsuarioNuevo').val(''); $('#rutUsuarioNuevo').val('')
+				$('#mailUsuarioNuevo').val(''); $('#rolUsuarioNuevo').val('')
+			});
+
+			// Crear nuevo usuario
+			$('#registerUserButton').click(async function(e){
+				e.preventDefault();
+				if (!$('#formNuevoUsuario')[0].checkValidity() || !$('#rolUsuarioNuevo').val() ) {
+					alert("Formulario de usuario inválido.\nRevise los datos e intente nuevamente.")
+            		return;
+        		}
+				let insertUsuario = {
+					usuario: $('#aliasUsuarioNuevo').val(),
+					pass : $('#claveUsuarioNuevo').val(),
+					nombre : $('#nombreUsuarioNuevo').val(),
+					rut : $('#rutUsuarioNuevo').val(),
+					mail : $('#mailUsuarioNuevo').val(),
+					nrol : $('#rolUsuarioNuevo').val(),
+				};
+				$.ajax({
+					url: endpoint,
+					method: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						query: mutationRegistrarUsuario,
+						variables: {insertUsuario}
+					}),
+					success: async function(response) {
+						let usuario = await response.data.addUsuario;
+						// A diferencia de registro normal, no se guarda la sesión
+						alert("Se ha añadido el usuario correctamente");
+						// Recargando página - TODO: optimizar consultando rol, añadiendo usuario a tabla final manualmente y borrando campos de formulario
+						window.location.reload();
+					},
+					error: function(error) {
+						console.error('Error fetching data', error);
+					}
+				});
+			});
+
+			// guardar modificación de usuario
+			$(document).on('click', '.updateUserButton', async function(e){
+				let userRut = $(this).attr('id').split('_')[1];
+				let formId = 'editUserForm_' + userRut;
+				let rolFieldId = 'rolUsuario' + userRut;
+				let form = $('#' + formId);
+				let rolSelect = $('#' + rolFieldId);
+
+				if ($('#' + formId)[0].checkValidity() && rolSelect.val() === '0') {
+					alert("Formulario de usuario inválido.\nRevise los datos e intente nuevamente.")
+            		return;
+        		}
+
+				let modUsuario = {
+					usuario: $('#usuarioUsuario' + userRut).val(),
+					pass : $('#claveUsuario' + userRut).val(),
+					nombre : $('#nombreUsuario' + userRut).val(),
+					//rut : $('#rutUsuario' + userRut).val(), // cambio de rut no soportado en backend
+					mail : $('#mailUsuario' + userRut).val(),
+					nrol : rolSelect.val(),
+				};
+				console.log({rut: userRut , modUsuario});
+				$.ajax({
+					url: endpoint,
+					method: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						query: mutationUpdateUsuario,
+						variables: {rut: userRut , modUsuario}
+					}),
+					success: async function(response) {
+						let res = await response.data.updateUsuario;
+						console.log(response)
+						alert("Se ha actualizado el usuario correctamente");
+					},
+					error: function(error) {
+						console.error('Error fetching data', error);
+					}
+				});
+			});
+
+			// borrar usuario
+			$(document).on('click', '.deleteUserButton', async function(e){
+				e.preventDefault();
+				if (!confirm("Un usuario borrado no se podrá recuperar. ¿desea continuar?")) {
+            		return;
+        		}
+				let input = { rut: e.target.id.split('_')[1] };
+				$.ajax({
+					url: endpoint,
+					method: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						query: query4,
+						variables: input
+					}),
+					success: async function(response) {
+						let res = await response.data.deleteUsuario;
+						alert(res.mensaje);
+						window.location.reload();
+					},
+					error: function(error) {
+						console.error('Error fetching data', error);
+					}
+				});
+			});
+
         </script>
 	</body>
 </html>

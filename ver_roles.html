@@ -37,16 +37,32 @@
 
 				<!-- contenido -->
 				<div class="col-10 mt-4" id="roles" style="overflow: auto;">
-					<table id="resultsTable" class="table">
+					<table id="resultsTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Rol</th>
                                 <th>Número Rol</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Results will be appended here -->
+                            <tr>
+                                <form id="formNuevoRol">
+                                <td>-</td>
+                                    <td>
+                                        <input style="width: auto;" type="text" class="form-control" id="rol-nuevo" placeholder="nombre de rol" required>
+                                    </td>
+                                    <td>
+                                        <input style="width: auto;" type="text" class="form-control" id="nrol-nuevo" placeholder="número rol" value="-" required disabled>
+                                    </td>
+                                    <td style="display: flex;">
+                                        <button style="margin: 2px;" type="button" class="btn btn-success" id="save-rol-nuevo">Añadir rol</button>
+                                        <button style="margin: 2px;" type="button" class="btn btn-danger"  id="delete-rol-nuevo">Descartar</button>        
+                                    </td>
+                                </form>
+                            </tr>
                         </tbody>
                     </table>
 				</div>
@@ -82,9 +98,17 @@
                     roles.forEach(rol => {
                         tbody.append(`
                             <tr>
-                                <td>${rol.id}</td>
-                                <td>${rol.rol}</td>
-                                <td>${rol.nrol}</td>
+                                <td title=${rol.id}>${rol.id.substring(0,5)+"..."}</td>
+                                <td>
+                                    <input type="text" class="form-control" id=${"rol-"+rol.id} placeholder="nombre de rol" value=${rol.rol} required>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id=${"nrol-"+rol.id} placeholder="número rol" value=${rol.nrol} required disabled>
+                                </td>
+                                <td style="display: flex;">
+                                    <button style="margin: 2px;" type="button" class="btn btn-warning" id=${"save-rol-"+rol.id}>Actualizar</button>
+                                    <button style="margin: 2px;" type="button" class="btn btn-danger"  id=${"delete-rol-"+rol.id}>Borrar</button>        
+                                </td>
                             </tr>
                         `);
                     });
